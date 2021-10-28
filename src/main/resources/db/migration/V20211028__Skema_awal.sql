@@ -1,5 +1,7 @@
 create table payment_provider (
     id varchar(36),
+    name varchar(100) not null,
+    code varchar(100) not null,
     primary key (id)
 );
 create table invoice_type (
