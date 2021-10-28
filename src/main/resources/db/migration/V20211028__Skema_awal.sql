@@ -4,6 +4,10 @@ create table payment_provider (
     code varchar(100) not null,
     primary key (id)
 );
+
+alter table payment_provider
+add constraint payment_provider_unique_code unique (code);
+
 create table invoice_type (
     id varchar(36),
     primary key (id)
