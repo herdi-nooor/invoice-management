@@ -43,5 +43,13 @@ diantaranya :
    >  psql -h 127.0.0.1 -U invoice invoicedb
 
 * setiap ada perubahan skema database. maka hapus database dengan cara menghapus folder invoicedb-data
+    > sudo rm -rf invoicedb-data
+  
 * lalu jalankan ulang docker diikuti mvn
-* 
+
+# bagian di entity yang sebagai vitur utama aplikasi
+* invoice = bagia tagihan
+* invoiceType = jenis invoice yang ada
+* payment = mengatur penerimaan pembayaran
+* paymentProvider = yang menyediakan alat pembayaran (gopay, doku, ovo, dana)
+* virtualaccount = akun virtual yang akan digunakan membayar
