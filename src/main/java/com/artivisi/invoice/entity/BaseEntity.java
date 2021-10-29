@@ -10,6 +10,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.time.LocalDateTime;
 
+// base entity biasanya di buat untuk fungsi soft dellet
+// ini juga bisa digunakan untuk audit traking
+
 public class BaseEntity {
     @Id
     @GeneratedValue(generator = "system-uuid")

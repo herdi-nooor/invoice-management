@@ -48,7 +48,7 @@ diantaranya :
 * lalu jalankan ulang docker diikuti mvn
 
 # bagian di entity yang sebagai vitur utama aplikasi
-* invoice = bagia tagihan
+* invoice = bagian tagihan
 * invoiceType = jenis invoice yang ada
 * payment = mengatur penerimaan pembayaran
 * paymentProvider = yang menyediakan alat pembayaran (gopay, doku, ovo, dana)
