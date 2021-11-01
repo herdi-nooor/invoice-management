@@ -1,6 +1,8 @@
 package com.artivisi.invoice.entity;
 
 import lombok.Data;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -15,6 +17,8 @@ import java.time.LocalDate;
 // mengatur tagihan
 
 @Data @Entity
+@SQLDelete(sql = "UPDATE invoice SET status_record = 'INACTIVE' WHERE id=?")
+@Where(clause = "status_record = 'ACTIVE'")
 public class Invoice extends BaseEntity{
 
     @NotNull

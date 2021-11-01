@@ -8,9 +8,8 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 // base entity biasanya di buat untuk fungsi soft dellet
@@ -35,6 +34,7 @@ public class BaseEntity {
     @LastModifiedDate
     private LocalDateTime updated;
 
-
+    @NotNull
+    @Enumerated(EnumType.STRING)
     private StatusRecord statusRecord = StatusRecord.ACTIVE;
 }

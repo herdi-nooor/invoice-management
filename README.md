@@ -22,6 +22,10 @@ diantaranya :
     * bank bsi
 * qris (e-wallet)
 
+tipe penbayaran yang tersedia:
+    * CLOSED : bayar sesuai nominal. kalau tidak sesuai, ditolak
+    * OPEN : pembayaran berapapun diterima
+    * INSTALLMENT : pembayaran diterima selama total akumulasi lebih kecil atau sama dengan nilai tagihan
 
 # cara setup database
 
