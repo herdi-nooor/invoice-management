@@ -1,3 +1,4 @@
+
 create table invoice_type (
     id character varying(36) NOT NULL,
     created timestamp without time zone,
@@ -11,10 +12,6 @@ create table invoice_type (
 
 ALTER TABLE ONLY invoice_type
     ADD CONSTRAINT invoice_type_pkey PRIMARY KEY (id);
-ALTER TABLE ONLY virtual_account
-    ADD CONSTRAINT fkbbdwdxpgdisiikyyhf2xteblc FOREIGN KEY (id_invoice) REFERENCES invoice(id);
-ALTER TABLE ONLY virtual_account
-    ADD CONSTRAINT fkt3t7f64hvgk4xjblsovqqkpll FOREIGN KEY (id_payment_provider) REFERENCES payment_provider(id);
 
 create table invoice (
     id character varying(36) NOT NULL,
@@ -58,15 +55,15 @@ ALTER TABLE ONLY payment_provider
 
 create table invoice_type_provider (
     id_invoice_type character varying(36) NOT NULL,
-    id_payment_provider character varying(36) NOT NULL,
+    id_payment_provider character varying(36) NOT NULL
 );
 
 ALTER TABLE ONLY invoice_type_provider
-    ADD CONSTRAINT invoice_pkey PRIMARY KEY (id_invoice_type, id_payment_provider);
+    ADD CONSTRAINT invoice_type_provider_pkey PRIMARY KEY (id_invoice_type, id_payment_provider);
 ALTER TABLE ONLY invoice_type_provider
-    ADD CONSTRAINT fk_invoice_type_provider_pkey FOREIGN KEY (id_invoice_type) REFERENCES invoice_type(id);
+    ADD CONSTRAINT fk_invoice_type_provider_type FOREIGN KEY (id_invoice_type) REFERENCES invoice_type(id);
 ALTER TABLE ONLY invoice_type_provider
-    ADD CONSTRAINT fk_invoice_type_provider_pkey FOREIGN KEY (id_payment_provider_type) REFERENCES payment_provider(id);
+    ADD CONSTRAINT fk_invoice_type_provider_provider FOREIGN KEY (id_payment_provider) REFERENCES payment_provider(id);
 
 create table virtual_account (
      id character varying(36) NOT NULL,
@@ -86,6 +83,7 @@ ALTER TABLE ONLY virtual_account
     ADD CONSTRAINT virtual_account_pkey PRIMARY KEY (id);
 ALTER TABLE ONLY virtual_account
     ADD CONSTRAINT fkbbdwdxpgdisiikyyhf2xteblc FOREIGN KEY (id_invoice) REFERENCES invoice(id);
+
 
 
 create table payment (
