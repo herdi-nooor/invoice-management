@@ -8,5 +8,5 @@ import java.util.Optional;
 
 public interface VirtualAccountDAO extends PagingAndSortingRepository<VirtualAccount, String> {
 
-    Optional<VirtualAccount> finByPaymentProviderAndCompanyIdAndAccountNumber(PaymentProvider provider, String companyId, String accountNumber);
+    Optional<VirtualAccount> findByPaymentProviderAndCompanyIdAndAccountNumber(PaymentProvider provider, String companyId, String accountNumber);
 }

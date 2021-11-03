@@ -27,6 +27,17 @@ tipe penbayaran yang tersedia:
     * OPEN : pembayaran berapapun diterima
     * INSTALLMENT : pembayaran diterima selama total akumulasi lebih kecil atau sama dengan nilai tagihan
 
+fitur aplikasi :
+* manajemen ccustomer
+  * registrasi ccustomer
+  * rekap tagihan ccustomer
+  * histori pembayaran
+
+* manajemen invoice 
+  * membuat invoice
+  * mengganti nilai dan tanggal jatuh tempo
+  * membatalkan invoice
+
 # cara setup database
 
 1. jalankan postgresql di doker

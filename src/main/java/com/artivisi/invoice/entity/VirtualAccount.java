@@ -21,7 +21,6 @@ public class VirtualAccount extends BaseEntity{
     @NotNull @ManyToOne @JoinColumn(name = "id_invoice")
     private Invoice invoice;
 
-
     @NotNull @NotEmpty @Size(min = 1)
     private String companyId;
 

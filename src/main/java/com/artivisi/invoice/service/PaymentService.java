@@ -6,22 +6,21 @@ import com.artivisi.invoice.entity.VirtualAccount;
 import com.artivisi.invoice.exception.VirtualAccountAlreadyPaidException;
 import com.artivisi.invoice.exception.VirtualAccountNotFoundException;
 import com.artivisi.invoice.helper.VirtualAccountHelper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 import java.math.BigDecimal;
 
 @Service
 @Transactional
 public class PaymentService {
-    @Autowired private VirtualAccountDAO virtualAccountDAO;
-    @Autowired private VirtualAccountHelper virtualAccountHelper;
+    private VirtualAccountDAO virtualAccountDAO;
 
     public void pay(PaymentProvider provider, String companyId,
-                    String accountNumber, BigDecimal amaount, String reference) throws VirtualAccountNotFoundException, VirtualAccountAlreadyPaidException {
+                    String accountNumber, BigDecimal amaount, String reference)
+            throws VirtualAccountNotFoundException, VirtualAccountAlreadyPaidException {
 
-        VirtualAccount va = virtualAccountHelper.cekVaAda(provider, companyId, accountNumber);
+        VirtualAccount va = VirtualAccountHelper.cekVaAda(virtualAccountDAO ,provider, companyId, accountNumber);
         cekVaLunas(provider, companyId, accountNumber, va);
         // refactoring code ^^^
 

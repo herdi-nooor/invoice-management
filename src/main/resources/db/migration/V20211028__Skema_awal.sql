@@ -1,3 +1,27 @@
+create table running_number (
+    id  character varying(36) NOT NULL,
+    prefix character varying(100) NOT NULL,
+    last_number bigint NOT NULL
+);
+
+ALTER TABLE ONLY running_number
+    ADD CONSTRAINT running_number_pkey PRIMARY KEY (id);
+
+create table customer (
+    id character varying(36) NOT NULL,
+    created timestamp without time zone,
+    created_by character varying(255),
+    last_updated_by character varying(255),
+    status_record character varying(255) NOT NULL,
+    updated timestamp without time zone,
+    code character varying(100) NOT NULL,
+    mobile_phone character varying(30) NOT NULL,
+    email character varying(100) NOT NULL,
+    name character varying(100) NOT NULL
+);
+
+ALTER TABLE ONLY customer
+    ADD CONSTRAINT customer_pkey PRIMARY KEY (id);
 
 create table invoice_type (
     id character varying(36) NOT NULL,
@@ -25,7 +49,8 @@ create table invoice (
     due_date date NOT NULL,
     invoicen_number character varying(100) NOT NULL,
     paid boolean NOT NULL,
-    id_invoice_type character varying(255) NOT NULL,
+    id_invoice_type character varying(36) NOT NULL,
+    id_customer character varying(36) NOT NULL,
     CONSTRAINT invoice_amount_check CHECK ((amount >= (0)::numeric))
 );
 
@@ -35,6 +60,8 @@ ALTER TABLE ONLY invoice
     ADD CONSTRAINT invoice_unique_number UNIQUE (invoicen_number);
 ALTER TABLE ONLY invoice
     ADD CONSTRAINT fkco4sbxv9cj2oevm6cdpq76ffb FOREIGN KEY (id_invoice_type) REFERENCES invoice_type(id);
+ALTER TABLE ONLY invoice
+    ADD CONSTRAINT fk_invoice_custemer FOREIGN KEY (id_customer) REFERENCES customer(id);
 
 create table payment_provider (
     id character varying(36) NOT NULL,

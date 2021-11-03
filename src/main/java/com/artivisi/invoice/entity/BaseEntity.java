@@ -19,6 +19,9 @@ import java.time.LocalDateTime;
 @MappedSuperclass @Getter @Setter
 @EntityListeners(AuditingEntityListener.class)
 public class BaseEntity {
+
+//    auditing = creadby, update, statusrecord, DLL
+
     @Id
     @GeneratedValue(generator = "system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "uuid2")
@@ -28,7 +31,7 @@ public class BaseEntity {
     private String createdBy;
 
     @LastModifiedBy
-    private String lastUpdatedBy;
+    private String LastUpdatedBy;
 
     @CreatedDate
     private LocalDateTime created;
